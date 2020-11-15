@@ -2,6 +2,8 @@
 
 ## This tool created for vehicles, but you can customize it and use it for own product
 
+<img src="https://newsfeed.org/wp-content/uploads/Facebook-Dynamic-Product-Ads-1.png">
+
 ### By using this tool you can:
 
 - Generate Feed files for Dynamic Ads
