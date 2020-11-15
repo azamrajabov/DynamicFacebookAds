@@ -1,4 +1,4 @@
-# Facebook Product Feed Management
+# Dynamic Facebook Ads
 
 ## This tool created for vehicles, but you can customize it and use it for own product
 

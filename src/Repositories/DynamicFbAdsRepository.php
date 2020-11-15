@@ -80,7 +80,7 @@ class DynamicFbAdsRepository extends AbstractRepository implements RepositoryInt
             WHERE
 	            t1.module_view_id = 634 AND
 	            t1.is_active = 1 AND
-	            t4.ignite_website_id = ?
+	            t4.website_id = ?
             LIMIT 1", $websiteId)->fetch();
         if (!$data['data']) return [];
         $config = unserialize($data['data']);
