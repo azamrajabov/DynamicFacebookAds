@@ -34,13 +34,13 @@ class FacebookApiTest extends \PHPUnit\Framework\TestCase
     {
         $r = $this->fbApi->createCatalogFeed(
             'testCatalog',
-            'http://inventory.dealerfire.com/onetimeimport/history/125-new.csv'
+            'http://{{URL}}/125-new.csv'
         );
         print_r($r);
     }
     public function testProductSets()
     {
-        $r = $this->fbApi->createProductSet('344995749402136');
+        $r = $this->fbApi->createProductSet('NUMBER');
         print_r($r);
     }
 }

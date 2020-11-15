@@ -147,7 +147,7 @@ return [
             '4dr Crossover' => ['4dr Crossover']
         ]
     ],
-    'feedUrl' => 'http://semtools.dealerfire.com/dynamicfbads/csv/',
-    'emails' => 'arajabov@dealersocket.com',
+    'feedUrl' => 'http://{URL}/dynamicfbads/csv/',
+    'emails' => 'azamrajabov@gmail.com',
     'environment' => 'development'
 ];
