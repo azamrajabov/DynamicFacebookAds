@@ -26,3 +26,5 @@ Use the Catalog Manager to set up a dynamic ad set that targets those events
 - You must have a Facebook Page for the business that your dynamic ads will apply to.
 - The pixel base code must already be installed.
 - You must have access to the Facebook Ads Manager.
+
+more information about facebook DynamicAds here https://developers.facebook.com/docs/facebook-pixel/implementation/dynamic-ads/

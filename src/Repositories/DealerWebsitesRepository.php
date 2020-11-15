@@ -25,7 +25,7 @@ class DealerWebsitesRepository extends AbstractRepository implements RepositoryI
         return $this->db->query(
             "SELECT id, domain 
              FROM dealer_websites
-             WHERE status = 1 AND IgniteArchive = 0
+             WHERE status = 1 AND Archive = 0
              "
         )->fetchAll();
     }
