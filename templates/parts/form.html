@@ -1,0 +1,68 @@
+<form method="post" action="{{ webFolder }}add" role="form">
+	<input type="hidden" name="id" value="{{ data.get('id') ?? 0 }}">
+	<div class="form-group">
+		<label for="websiteId">Website Name</label>
+		<input type="text" class="form-control" id="website_name" name="website_name" value="{{ data.get('website_name') }}">
+		<span class="error">{{ errors.website_name|join('. ') }}</span>
+	</div>
+	<div class="form-group">
+		<label for="websiteId">Choose Website</label>
+		<select name="website_id" id="websiteId" class="form-control">
+			<option value="">Select</option>
+			{% for website in dealerWebsites %}
+			<option value="{{website.id}}" {{ data.get('website_id') == website.id ? 'selected' }}>{{website.domain}} - {{website.id}}</option>
+			{% endfor %}
+		</select>
+		<span class="error">{{ errors.website_id|join('. ') }}</span>
+	</div>
+	<div class="form-group" id="feedWrapper">
+		<label for="feed">Feed (Optional)</label>
+		{% set feeds = data.get('feed') %}
+		<select name="feed[]" id="feed" class="form-control" multiple>
+			{% if website_feeds %}
+				<option value="">All</option>
+				{% for feed in website_feeds %}
+				<option value="{{ feed }}" {{ feed in feeds|split(',') ? 'selected' }}>{{ feed }}</option>
+				{% endfor %}
+			{% endif %}
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="item_title">Item Title</label>
+		<input type="text" class="form-control" id="item_title" name="item_title" value="{{ data.get('item_title') ?? 'Year,Make,Model,Trim' }}">
+		<span class="error">{{ errors.item_title|join('. ') }}</span>
+	</div>
+	<div class="form-group">
+		<label for="item_description">Item Description</label>
+		<input type="text" class="form-control" id="item_description" name="item_description" value="{{ data.get('item_description') ?? 'Year,Make,Model,Trim' }}">
+		<span class="error">{{ errors.item_description|join('. ') }}</span>
+	</div>
+	<div class="form-group">
+		<label for="new-price-field">New Price Field</label>
+		<select name="new_price_field" id="new-price-field" class="form-control">
+			{% for column, name in prices %}
+			<option value="{{ column }}" {{ data.get('new_price_field') == column ? 'selected' }}>{{ name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="used-price-field">Used Price Field</label>
+		<select name="used_price_field" id="used-price-field" class="form-control">
+			{% for column, name in prices %}
+			<option value="{{ column }}" {{ data.get('used_price_field') == column ? 'selected' }}>{{ name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="vehicle-details-url">Vehicle Details Url</label>
+		<input type="text" class="form-control" id="vehicle-details-url" name="vehicle_details_url" value="{{ data.get('vehicle_details_url') ?? 'vehicle-details' }}">
+	</div>
+	<div class="form-group">
+		<label for="facebook-page-id">Facebook page ID</label>
+		<input type="text" class="form-control" id="facebook-page-id" name="fb_page_id" value="{{ data.get('fb_page_id') }}">
+	</div>
+	<div class="checkbox"><label for="marketplace"><input id="marketplace" type="checkbox" value="1" name="marketplace" {{ data.get('marketplace') ? 'checked' }} />Marketplace Item</label></div>
+	<div class="checkbox"><label for="isCertified"><input type="hidden" name="is_certified" value="0"><input id="isCertified" type="checkbox" value="1" name="is_certified" {{ data.get('is_certified') ? 'checked' }} />Certified Pre-Owned</label></div>
+	<div class="checkbox"><label for="precise_price"><input id="precise_price" type="checkbox" value="1" name="precise_price" {{ data.get('precise_price') ? 'checked' }} />Precise Price enabled</label></div>
+	<button type="submit" class="btn btn-default">Submit</button>
+</form>

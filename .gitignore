@@ -1,0 +1,12 @@
+.buildpath
+.project
+.settings
+.DS_Store
+csv/*
+ids/*
+local
+FolderId
+folderFileIds
+vendor
+logs.txt
+*.php.save

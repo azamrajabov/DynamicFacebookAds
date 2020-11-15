@@ -1,0 +1,50 @@
+<table class="table grid table-striped" style="margin-top: 50px;">
+	<tr>
+		<th>Ignite Id</th>
+		<th>&nbsp;&nbsp;</th>
+		<th>Website Name</th>
+		<th>Feed</th>
+		<th>Item Title</th>
+		<th>Item Description</th>
+		<th>New</th>
+		<th>Used</th>
+		{#<th>Details</th>#}
+		<th>Certified</th>
+		<th>Precise Price</th>
+		<th>Added On</th>
+		<th>Actions</th>
+	</tr>
+	{% for dynamicFbAds in dynamicFbAds %}
+	<?
+		$params = unserialize($dynamicFbAds['params']);
+	?>
+	<tr>
+		<td><a href="https://ignite2.dealerfire.com/website/default/update/{{ dynamicFbAds.website_id }}" target="_blank">{{ dynamicFbAds.website_id }}</a></td>
+		<td><a href="{{ webFolder }}opencatalog/{{ dynamicFbAds.id }}" target="_blank">
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAYFBMVEU6WJc5WJf///85V5c6V5f+/v79/f06WJY6V5Y5V5Y5WJZddani5u91irby9Pevu9VheatXcKZJZZ+Gmb/o6/JCX5uisM5PaqK9x9zHz+HN1OS1wNd9kbqQocTg5e7w8vfVMmVUAAABZ0lEQVQ4jcVSXZOCMAxMTOgHKGBBT/HU//8vb9PSm3HwxsfL9IGF7Sa7hHYfinZeiT2pkmdRj3rBIDCxtBSFWYSI6RWDoPYAfsAHPKrhU0rp5A1bC/FMykzCyoHVS5puy7JchhEYBPQiIhFv+lbd0rvG4UycW9g73MdchZAW11i5ShAKGEliRCNqhe92uSgAgxBsLrTADJhCT1d8RPX9cwLOLmw2TxECRNo9cL95HFLB5oLhwxSCBG6121uDiVacg9LWplOLibnbm/6hYnPBEVoSyatwG7JCf6i42ITLfEwIhAYKFZvNoN5y4EjpPAyX3lxch2E4Jyk2879ACR/nZs3IophhpCSpoqZAcpzhsBzUXpTC6z6Ygss5WZLLdh9WBVcUbtt98N04fs/43t/Hcfx6vw8IarWZ8XYfalAr3u6DRQ1Cxdt9+I264O0+GMFZi4Lf7ENRqPiPfcgK/7MP+P/VRcUgfKgfuzwS4L3b7cYAAAAASUVORK5CYII=" width="20">
+			</a>
+		</td>
+		<td><a href="edit/{{ dynamicFbAds.id }}">{{ dynamicFbAds.website_name }}</a></td>
+		<td>{{ dynamicFbAds.feed|replace({',': ', '}) }}</td>
+		<td>{{ dynamicFbAds.item_title|replace({',': ', '}) }}</td>
+		<td>{{ dynamicFbAds.item_description|replace({',': ', '}) }}</td>
+		<td>{{ dynamicFbAds.new_price_field }}</td>
+		<td>{{ dynamicFbAds.used_price_field }}</td>
+		{#<td>{{ dynamicFbAds.vehicle_details_url }}</td>#}
+		<td>{{ dynamicFbAds.is_certified ? "Yes" : "No" }}</td>
+		<td>{{ dynamicFbAds.precise_price ? "Yes" : "No"}}</td>
+		<td>{{ dynamicFbAds.created_at|date('m-d-Y') }}</td>
+		<td>
+			<form method="post" target="_blank" action="{{ webFolder }}sync/{{ dynamicFbAds.id }}" role="form">
+				<input type="hidden" name="sync" value="1">
+				<input type="hidden" name="website_id" value="<?=$dynamicFbAds['website_id']?>" class="small">
+				<button type="submit" class="btn btn-md">Sync</button>
+			</form>
+			<form method="post" action="{{ webFolder }}delete" role="form">
+				<input type="hidden" name="id" value="{{ dynamicFbAds.id }}">
+				<button type="submit" class="btn btn-md delete">Delete</button>
+			</form>
+		</td>
+	</tr>
+	{% endfor %}
+</table>

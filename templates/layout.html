@@ -1,0 +1,105 @@
+<html>
+	<head>
+		{% block head %}
+		<title>{% block title %}{% endblock %}</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		{% endblock %}
+	<style>
+		#content
+		{
+			width: 95%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.table.grid
+		{
+			font-size: 14px;
+		}
+		.table.grid tr,
+		.table.grid tr td,
+		.table.grid tr td form
+		{
+			padding:0px;
+			margin: 0px;
+			height: 30px;
+		}
+		.table.grid tr td,
+		.table.grid tr th
+		{
+			text-align: center;
+		}
+		.table.grid tr td:nth-child(3),
+		.table.grid tr th:nth-child(3)
+		{
+			text-align: left;
+			margin-left: 5px;
+			padding-left: 5px;
+		}
+		#footer
+		{
+			margin: 20px;
+			text-align: center;
+		}
+		.error
+		{
+			color: red;
+		}
+		td form button.btn
+		{
+			padding: 2px;
+			width: 75px;
+			border: 1px #777 solid;
+			border-color: #777;
+			margin:1px;
+		}
+		#search {
+			width: 100%;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="content">{% block content %}{% endblock %}</div>
+		<div id="footer">
+			<hr>
+			{% block footer %}
+			Copyright &copy; DealerSocket.
+			{% endblock %}
+		</div>
+		<script type="text/javascript">
+			jQuery(function($){
+				$('#websiteId').on('change', function() {
+					var websiteId = $('#websiteId').val();
+					$.getJSON("/dynamicfbads/public/index/feed?websiteId=" + websiteId, null, function(data) {
+						if (!$.isEmptyObject(data)) {
+							var options = '<option value="">All </option>';
+							$.each(data, function(index, value) {
+								options += '<option value=' + value + '>' + value + '</option>';
+							});
+							$('#feedWrapper').show();
+							$('#feed').html(options);
+						} else {
+							$('#feedWrapper').hide();
+						}
+					});
+				});
+
+				$('.delete').on('click', function() {
+					return confirm('Are you sure?');
+				});
+				$('#search').keyup(function() {
+					var key = $(this).val().toLowerCase();
+					$('table.grid tr').show();
+					$.each($('table.grid tr td:nth-child(3)'), function () {
+						var websiteName = $(this).text().toLowerCase();
+						if (websiteName.indexOf(key) == -1) {
+							$(this).parent().hide();
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

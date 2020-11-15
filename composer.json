@@ -1,0 +1,32 @@
+{
+	"name": "Dynamic Facebook Ads Tool",
+	"description": "Dynamic Facebook creates feed for Facebook.",
+	"keywords": ["DynamicFbAds"],
+	"license": "",
+	"authors": [
+		{
+			"name": "Azam Rajabov",
+			"email": "arajabov@dealersocket.com",
+			"role": "Creator / Main Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.0.0",
+		"filp/whoops": "~2.1",
+		"symfony/http-foundation": "v4.0.6",
+		"nikic/fast-route": "^1.3",
+		"rdlowrey/auryn": "^1.4",
+		"twig/twig": "~1.0",
+		"dibi/dibi": "^4.0",
+		"webmozart/assert": "^1.3",
+		"facebook/php-business-sdk": "^3.0.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"DynamicFbAds\\": "src/"
+		}
+	},
+	"require-dev": {
+		"phpunit/phpunit": "7"
+	}
+}

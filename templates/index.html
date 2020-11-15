@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Dynamic Facebook Ads{% endblock %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+{% if msg != '' %}
+<div class="alert alert-danger">
+	{{ msg }}
+</div>
+{% endif %}
+<h1>Dynamic Facebook Ads</h1>
+
+<a href="{{ webFolder }}add">+ Add New</a>
+<hr>
+<div>
+	<input type="text" id="search" placeholder="Search By Name">
+</div>
+{% include "parts/grid.html" %}
+
+{% endblock %}

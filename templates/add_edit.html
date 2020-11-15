@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}Adwords Automation{% endblock %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<h1>{% if data.get('id') %}
+	Update Website
+	{% else %}
+	Add New Website
+	{% endif %}
+</h1>
+
+<a href="{{ webFolder }}"><< Back to the list</a>
+<hr>
+
+{% include "parts/form.html" %}
+
+{% endblock %}
