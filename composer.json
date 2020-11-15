@@ -1,7 +1,7 @@
 {
 	"name": "Dynamic Facebook Ads Tool",
 	"description": "Dynamic Facebook creates feed for Facebook.",
-	"keywords": ["DynamicFbAds"],
+	"keywords": ["DynamicFacebookAds"],
 	"license": "",
 	"authors": [
 		{
@@ -23,7 +23,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"FaceBookCatalogDataFeed\\": "src/"
+			"DynamicFacebookAds\\": "src/"
 		}
 	},
 	"require-dev": {
