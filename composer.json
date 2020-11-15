@@ -23,7 +23,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"DynamicFbAds\\": "src/"
+			"FaceBookCatalogDataFeed\\": "src/"
 		}
 	},
 	"require-dev": {
